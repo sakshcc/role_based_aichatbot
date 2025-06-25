@@ -1,14 +1,53 @@
-# Python-generated files
+# Python bytecode
 __pycache__/
-*.py[oc]
-build/
-dist/
-wheels/
-*.egg-info
+*.py[cod]
+*.pyo
+*.pyd
 
 # Virtual environments
-.venv
-.idea/ 
-*.lock
-resources/vectorstore
+venv/
+env/
+ENV/
+.venv/
+
+# VS Code & IDE settings
+.vscode/
+.idea/
+
+# OS system files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment files
 .env
+*.env
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Auto-generated ChromaDB folder
+chroma_db/
+
+# PyInstaller artifacts
+*.spec
+dist/
+build/
+
+# Test cache
+.pytest_cache/
+
+# MyPy
+.mypy_cache/
+
+# Streamlit app state
+.streamlit/
+
+# HTML coverage reports
+htmlcov/
+coverage.xml
+
+# Pyre type checker
+.pyre/

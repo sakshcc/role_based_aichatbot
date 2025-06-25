@@ -1,0 +1,21 @@
+fastapi
+uvicorn
+streamlit
+requests
+python-dotenv
+httpx
+
+# LangChain Community Modules
+langchain-community
+langchain  # for text splitter
+chromadb
+
+# Embedding model
+sentence-transformers
+
+# Required for loading .md and .csv docs
+unstructured
+pandas
+
+# If using Ollama (for LLaMA 3)
+ollama
