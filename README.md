@@ -6,24 +6,18 @@ A secure, intelligent chatbot powered by **LLMs + Vector Search (RAG)** — with
 
 ## 🧩 Problem Background
 
-**FinSolve Technologies**, a leading FinTech provider, has recently faced growing communication delays, scattered document access, and siloed teams across departments like Finance, HR, Marketing, and Engineering.
-
-These inefficiencies blocked quick decision-making and slowed strategic execution.
-
-To fix this **Tony Sharma**, the company's Chief Innovation Officer, launched an AI transformation project and reached out to **Peter Pandey**, an AI Engineer ready to apply cutting-edge retrieval-augmented generation (RAG) techniques using LLMs.
-
-> 🎯 Tony’s(Me) Vision:  
-> “Build an AI assistant that gives the right data to the right team securely and on demand.”
+**FinSolve Technologies**,  a leading FinTech company, was experiencing communication delays and fragmented document access across teams like Finance, HR, Marketing, Engineering, and C-Level Executives. These issues led to slower decision-making and operational inefficiencies, as teams lacked a centralized, secure way to access internal knowledge specific to their roles.
 
 ---
 
 ## 🧠 Solution Overview
+To address this issue, an internal AI chatbot was developed using Retrieval Augmented Generation (RAG) and Role-Based Access Control (RBAC). It ensures that every user receives accurate, secure, and role-relevant information instantly.
 
 This chatbot solves FinSolve's data access problem using:
 - 🧠 **RAG (Retrieval-Augmented Generation)** via LLaMA 3 (Ollama)
 - 🔐 **Role-Based Filtering** at the vector search level
 - ⚡ **FastAPI + Streamlit** for interactive chat and login
-- 🧾 **Markdown documents** stored per department with metadata
+- 🧾 **Documents** stored per department with metadata
 
 ---
 
@@ -94,7 +88,66 @@ This chatbot solves FinSolve's data access problem using:
 ```bash
 git clone https://github.com/sakshcc/role_based_aichatbot
 cd role-based-chatbot
+```
 
+#### 2. 🔧 Backend Setup (FastAPI + LLaMA 3 via Ollama)
 
+Step into the backend app and create a virtual environment:
 
+```bash
+cd app
+python -m venv venv
+````
 
+Activate the virtual environment:
+
+```bash
+venv\Scripts\activate     # On Windows
+# OR
+source venv/bin/activate  # On Mac/Linux
+````
+
+Install the dependencies:
+
+```bash
+pip install -r ../requirements.txt
+```
+
+In a new terminal, start the LLaMA 3 model using Ollama:
+
+```bash
+ollama run llama3
+```
+📝 Keep this terminal open — it runs the local LLM engine.
+The first run will download the model (~3–4 GB).
+
+Go back to the backend terminal and start the FastAPI server:
+
+```bash
+uvicorn main:app --reload
+```
+
+🔗 Visit: http://127.0.0.1:8000
+
+### 3. 💬 Frontend Setup (Streamlit UI)
+In another new terminal:
+
+```bash
+cd frontend
+streamlit run frontend.py
+```
+🔗 Visit: http://localhost:8501
+
+### 4. 📄 Embed Documents (Run Once Before Use)
+To embed documents into ChromaDB:
+
+```bash
+python embed_documents.py
+```
+
+This script:
+Loads documents from the data/ folder
+Generates embeddings using sentence-transformers
+Stores them in ChromaDB with role-based metadata
+
+✅ Once these steps are done, your role-based chatbot is fully set up and ready to use! 
