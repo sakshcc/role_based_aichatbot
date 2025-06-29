@@ -81,6 +81,69 @@ This chatbot solves FinSolve's data access problem using:
 
 ---
 
+## 🚀 Project Architecture
+
+```mermaid
+flowchart TD
+    subgraph Frontend
+        ST[Streamlit UI<br><b>frontend.py</b>]
+    end
+
+    subgraph Backend
+        API[FastAPI App<br><b>main.py</b>]
+    end
+
+    subgraph DB
+        CH[ChromaDB<br><b>chroma_db + chroma_store</b>]
+    end
+
+    subgraph Model
+        LLM[LLaMA3 via Ollama]
+    end
+
+    subgraph Data
+        Files[Markdown / Text Files<br><b>resources/data</b>]
+    end
+
+    ST --> API
+    API --> CH
+    API --> LLM
+    CH --> LLM
+    Files --> CH
+    LLM --> API
+    API --> ST
+```
+
+## 📁 Project Structure
+
+```
+DS-RPC-01/
+├── app/
+│   ├── __pycache__/
+│   ├── chroma_db/
+│   ├── chroma_store/
+│   ├── embed_documents.py
+│   ├── frontend.py
+│   └── main.py
+│
+├── resources/
+│   └── data/
+│       ├── engineering/
+│       ├── finance/
+│       ├── general/
+│       ├── hr/
+│       └── marketing/
+│
+├── venv/
+│
+├── .gitignore
+├── .python-version
+├── pyproject.toml
+├── README.md
+└── requirements.txt
+```
+
+
 ## ⚙️ Setup Instructions
 
 ### 1. Clone the repository
