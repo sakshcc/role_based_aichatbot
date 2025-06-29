@@ -214,3 +214,36 @@ Generates embeddings using sentence-transformers
 Stores them in ChromaDB with role-based metadata
 
 ✅ Once these steps are done, your role-based chatbot is fully set up and ready to use! 
+
+---
+
+## 🔧 Extending & Customizing
+
+✅ **Add new roles:**  
+- Create a new folder in `resources/data/` named after the new department (e.g., `resources/data/legal/`).
+- Add your `.md` documents there.
+- Update user credentials and roles in your `main.py` or wherever your user-role DB/auth is managed.
+
+✅ **Add new document types:**  
+- Extend the file parsing logic inside `app/embed_documents.py` to handle more than `.md` files (like `.pdf`, `.csv`, etc.).
+
+✅ **Change embedding model:**  
+- Inside `app/embed_documents.py`, change the line where you set:
+  ```python
+  EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+  ```
+  to any other `sentence-transformers` model.
+
+✅ **Switch LLM:**  
+- Update the `model` name in your FastAPI code (`app/main.py`), where you send the prompt to Ollama:
+  ```python
+  response = ollama.chat(model="llama3", messages=...)
+  ```
+  Replace `"llama3"` with another Ollama-supported model (like `"mistral"`, `"codellama"`, etc.).
+
+---
+
+## 📝 License
+This project is for internal use at **FinSolve Technologies**.  
+All source code, models, and documentation are proprietary and confidential.
+
