@@ -190,8 +190,6 @@ Go back to the backend terminal and start the FastAPI server:
 uvicorn main:app --reload
 ```
 
-🔗 Visit: http://127.0.0.1:8000
-
 ### 3. 💬 Frontend Setup (Streamlit UI)
 In another new terminal:
 
